@@ -17,10 +17,24 @@ form.addEventListener("submit", function(event) {
         brief: document.getElementById("briefInput").value
     })
     .then(function() {
-        alert("Sent consultation email to consulter(s)!");
+        //successfully sent
+        window.location.href = "success/success.html"
     })
     .catch(function(error) {
-        alert("Failed to send!")
-        console.log(error);
+        //error sending email
     });
+
+    emailjs.send("service_aj51c8h", "template_q3lacvh", {
+        name: document.getElementById("nameInput").value,
+        email: document.getElementById("emailInput").value,
+        date: document.getElementById("preferredDate").value,
+        time: document.getElementById("preferredTime").value,
+    })
+    .then(function() {
+        //successfully sent
+    })
+    .catch(function(error) {
+        //error sending email
+    });
+
 });
